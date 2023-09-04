@@ -44,10 +44,13 @@ public class Main {
         double promedio = (3.5*0.3) + (2.6 * (30/100)) + (4 * 0.40);
         System.out.println("Mi promedio es :" + promedio);
         */
-        String nombre = "Hector";
-        String apellido = "Sanchez";
+        String nombre = "Hector ";
+        String apellido = "Sanchez, ";
+        String ciudad = "de la ciudad de : Neiva";
 
-        System.out.println("Nombre :" + nombre + apellido);
+        System.out.println("Nombre :" + nombre + apellido + ciudad);
+        System.out.println("NUEVOS CAMBIOS DEL PROYECTO");
+
 
 
         boolean t = true;
