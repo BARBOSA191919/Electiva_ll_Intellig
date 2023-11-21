@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <!-- Definición del conjunto de caracteres y título de la página -->
+    <meta charset="UTF-8">
+    <title>Registrarse</title>
+
+    <!-- Enlace al archivo CSS de Bootstrap para estilos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <!-- Icono de la página -->
+    <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/2511/PNG/96/coat_rain_jacket_raincoat_autumn_clothing_icon_150805.png" type="image/x-icon">
+
+    <!-- Estilos personalizados para el fondo y la tarjeta -->
+    <style>
+        body {
+            background-image: url('https://e1.pxfuel.com/desktop-wallpaper/567/477/desktop-wallpaper-6-rainy-rain-pc.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position:center;
+            margin: 0; /* Elimina el margen predeterminado del cuerpo */
+            padding: 0; /* Elimina el relleno predeterminado del cuerpo */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .card {
+            width: 450px;
+            background: rgba(255, 255, 255, 0.5); /* Fondo blanco con opacidad del 70% */
+            backdrop-filter: blur(0px); /* Efecto de desenfoque para mejorar la transparencia */
+        }
+
+        .card-header {
+            background-image: url('https://w.forfun.com/fetch/15/159efd54ce603cfcca2d252b65ad3373.jpeg');
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="col-sm-3">
+        <!-- Formulario de registro -->
+        <form th:action="@{/save}" th:object="${persona}" method="POST">
+            <div class="card">
+                <!-- Encabezado de la tarjeta -->
+                <div class="card-header">
+                    <h3><center>REGISTRO</center></h3>
+                </div>
+                <div class="card-body">
+                    <!-- Campos del formulario: ID, NOMBRE, APELLIDO, DOCUMENTO, TIPO DE DOCUMENTO, EMAIL, CONTRASEÑA, SEXO, EDAD, FECHA, DIRECCION -->
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>ID</label>
+                            <input th:field="*{id}" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>NOMBRE</label>
+                            <input th:field="*{nombre}" type="text" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>APELLIDO</label>
+                            <input th:field="*{apellido}" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>DOCUMENTO</label>
+                            <input th:field="*{documento}" type="number" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>TIPO DE DOCUMENTO</label>
+                            <select class="form-control" th:field="*{tipodocumento}" required>
+                                <option value="Cédula de ciudadanía">Cédula de ciudadanía </option>
+                                <option value="Cédula extranjera">Cédula extranjera</option>
+                                <option value="Permiso especial de permanencia">Permiso especial de permanencia</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>EMAIL</label>
+                            <input th:field="*{email}" type="email" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>CONTRASEÑA</label>
+                            <input th:field="*{contra}" type="password" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>SEXO</label>
+                            <select class="form-control" th:field="*{sexo}" required>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                                <option value="No binario">No binario</option>
+                                <option value="No identificado">No identificado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>EDAD</label>
+                            <input th:field="*{edad}" type="number" class="form-control" required id="edadInput">
+                            <span th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}" class="error-message"></span>
+                        </div>
+                        <!-- Script para validar la edad -->
+                        <script>
+                            document.getElementById('edadInput').addEventListener('input', function(event) {
+                                var edad = event.target.value;
+                                if (edad < 18 ) {
+                                    event.target.setCustomValidity('La edad debe ser mayor o igual a 18 años');
+                                } else {
+                                    event.target.setCustomValidity('');
+                                }
+                            });
+                        </script>
+                        <div class="form-group col-md-6">
+                            <label>FECHA</label>
+                            <input th:field="*{fecha}" type="date" class="form-control" required id="fechaInput">
+                        </div>
+                    </div>
+                    <!-- Script para validar la fecha -->
+                    <script>
+                        document.getElementById('fechaInput').addEventListener('input', function(event) {
+                            var fecha = new Date(event.target.value);
+                            var minDate = new Date('1953-01-01');
+                            var maxDate = new Date('2005-01-01');
+
+                            if (fecha < minDate || fecha > maxDate) {
+                                event.target.setCustomValidity('La fecha debe estar entre 1953-01-01 y 2005-01-01');
+                            } else {
+                                event.target.setCustomValidity('');
+                            }
+                        });
+                    </script>
+                    <div class="form-group col-md-12">
+                        <label>DIRECCION</label>
+                        <input th:field="*{direccion}" type="text" class="form-control">
+                    </div>
+                </div>
+                <!-- Pie de la tarjeta con checkbox de acuerdo y botones de guardar y atrás -->
+                <div class="card-footer">
+                    <h6>
+                        <input type="checkbox" id="terminosCheckbox" name="terminosCheckbox" required>
+                        <label for="terminosCheckbox">Estoy de acuerdo con <a href="https://www.icontec.org/terminos-y-condiciones/">Términos y Condiciones</a></label>
+                    </h6>
+                    <center>
+                        <input type="submit" value="Guardar" class="btn btn-success">
+                        <a th:href="@{/impermeable}" class="btn btn-warning">Atrás</a>
+                    </center>
+                </div>
+            </div>
+            <script>
+                // Función para mostrar el mensaje de inicio de sesión exitoso
+                function mostrarMensaje() {
+                    alert(" Registro exitoso ✅");
+                }
+
+                // Agregar un evento 'onsubmit' al formulario para llamar a la función cuando se envía el formulario
+                document.querySelector('form').addEventListener('submit', function() {
+                    mostrarMensaje();
+                });
+            </script>
+        </form>
+    </div>
+</div>
+</body>
+</html>

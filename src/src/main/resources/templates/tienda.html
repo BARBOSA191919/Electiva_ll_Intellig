@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impermeables Legends</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/2511/PNG/96/coat_rain_jacket_raincoat_autumn_clothing_icon_150805.png" type="image/x-icon"><!--para agregar el icono a la pagina -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;0,800;1,600&display=swap');
+        /* Establece estilos iniciales para todos los elementos, eliminando márgenes, rellenos y decoraciones predeterminados */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        /* Establece la fuente predeterminada para el cuerpo del documento */
+        body {
+            font-family: 'Poppinns', sans-serif;
+        }
+
+        /* Hace que las imágenes se ajusten al 100% de su contenedor */
+        img {
+            max-width: 100%;
+        }
+
+        /* Define el estilo para el contenedor principal, limitando su ancho y centrando en la página */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Establece estilos para el encabezado, utilizando flexbox para alinear y distribuir elementos */
+        .header {
+            display: flex;
+            align-items: center;
+            background-color: #EFF3F4;
+            padding: 100px 0 0 0;
+        }
+
+        /* Establece estilos para el menú, posición absoluta para que sea fijo en la parte superior */
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #EFF3F4;
+            transition: background-color 0.5s;
+            z-index: 1000;
+            padding: 0px;
+
+        }
+        /* Estilos para el logotipo del sitio */
+        .logo {
+            font-size: 25px;
+            color: #9BCE21;
+            text-transform: uppercase;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        /* Estilos para los elementos de la barra de navegación */
+        .menu .navbar ul li {
+            position: relative; /* Posición relativa para posicionar elementos secundarios */
+            float: left; /* Hace que los elementos floten a la izquierda */
+            margin-right: 20px;
+        }
+
+        /* Estilos para los enlaces dentro de los elementos de la barra de navegación */
+        .menu .navbar ul li a {
+            font-size: 18px;
+            padding: 20px;
+            color: #111419;
+            display: block;
+            text-decoration: none;
+            transition: all 0.5s ease;
+        }
+
+        /* Estilos para el estado de hover de los enlaces en la barra de navegación */
+        .menu .navbar ul li a:hover {
+            color: #f1f3ed;
+            text-decoration: none;
+            padding: 5px 10px;
+            background: #111111;
+            border-radius: 15px;
+        }
+
+        /* Oculta un elemento con el id 'menu' (posiblemente un menú específico) */
+        #menu {
+            display: none;
+        }
+
+        /* Establece el ancho de los iconos de menú */
+        .menu-icono {
+            width: 25px;
+        }
+
+        /* Estilos para la etiqueta de menú (posiblemente un botón de menú en dispositivos más pequeños) */
+        .menu label {
+            cursor: pointer; /* Muestra un cursor de puntero cuando pasa sobre el elemento */
+            display: none; /* Inicialmente, oculta la etiqueta de menú */
+        }
+
+        /* Estilos para los elementos de submenú */
+        .submenu {
+            position: relative; /* Posición relativa para posicionar elementos secundarios */
+        }
+
+        /* Inicialmente, oculta el elemento con el id 'carrito' cuando está dentro del submenú */
+        .submenu #carrito {
+            display: none;
+            width: 100%;
+
+        }
+
+        /* Muestra el elemento con el id 'carrito' cuando se pasa el cursor sobre el submenú */
+        .submenu:hover #carrito {
+            display: block;
+            position: absolute; /* Posición absoluta para posicionar con respecto al contenedor padre más cercano */
+            right: 0;
+            backdrop-filter: blur(10px); /* Desenfoque del fondo del elemento */
+            top: 100%;
+            z-index: 1; /* Hace que el carrito esté por encima de otros elementos */
+            background-color: #4E485076; /* Color de fondo con opacidad */
+            padding: 20px;
+            min-width: 400px;
+            align-items: center;
+            margin-bottom: 10px;
+            margin-right: 30px;
+        }
+
+
+        /* Estilos para las tablas en el contenido */
+        table {
+            width: 100%;
+        }
+
+        /* Estilos para los elementos th y td (celdas de la tabla) */
+        th, td {
+            color: #EFF3F4;
+        }
+
+        /* Estilos para los botones y espaciado entre ellos */
+        .btn {
+            margin-right: 10px; /* Espaciado entre los botones */
+        }
+
+        /* Estilos para el botón "borrar" */
+        .borrar {
+            background-color: #9BCE21;
+            border-radius: 50%;
+            padding: 5px 10px;
+            color: #EFF3F4;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        /* Estilos para la sección del encabezado */
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Estilos para la parte de texto del encabezado */
+        .header-txt {
+            flex-basis: 50%;
+            margin-right: 25px;
+        }
+
+        /* Estilos para el elemento span */
+        span {
+            color: #9BCE21;
+            font-size: 17px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 25px;
+        }
+
+        /* Estilos para el título h1 en el encabezado */
+        .header-txt h1 {
+            font-size: 70px;
+            text-transform: capitalize;
+            line-height: 1;
+            color: #111419;
+            margin-bottom: 35px;
+        }
+
+        /* Estilos para el párrafo en el encabezado */
+        .header-txt p {
+            font-size: 17px;
+            color: #515557;
+            margin-bottom: 35px;
+        }
+
+        /* Estilos para los botones en la sección del encabezado */
+        .butons {
+            display: flex;
+        }
+
+        /* Estilos para el botón específico (.btn-1) */
+        .btn-1 {
+            display: inline-block;
+            padding: 2px 15px;
+            background-color: #98CE21;
+            margin-right: 10px;
+            color: #FFFFFF;
+            text-transform: capitalize;
+            margin-bottom: 100px;
+            text-decoration: none;
+        }
+
+        /* Estilos para la parte de la imagen en el encabezado */
+        .header-img {
+            flex-basis: 50%;
+            text-align: center;
+        }
+
+        /* Estilos para la imagen en la parte de la imagen del encabezado */
+        .header-img img {
+            height: 550px;
+        }
+
+        /* Estilos para la sección de ofertas */
+        .oferts {
+            padding: 100px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Estilos para cada oferta individual (.ofert-1) */
+        .ofert-1 {
+            flex-basis: calc(34.3% - 28px);
+            padding: 30px 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Estilos específicos para las ofertas (.b1, .b2, .b3) */
+        .b1 {
+            background-color: #91DDD8;
+        }
+        .b2 {
+            background-color: #FA9824;
+        }
+        .b3 {
+            background-color: #9BCE21;
+        }
+
+        /* Estilos para el texto en la sección de ofertas */
+        .ofert-txt {
+            flex-basis: 70%;
+        }
+
+        /* Estilos para el título h3 en la sección de ofertas */
+        .ofert-txt h3 {
+            color: #FFFFFF;
+            font-size: 30px;
+        }
+
+        /* Estilos para los enlaces en la sección de ofertas */
+        .ofert-txt a {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+        /* Estilos para la parte de la imagen en la sección de ofertas */
+        .ofert-img {
+            flex-basis: 40%;
+        }
+
+        /* Estilos para la sección de productos */
+        .product {
+            padding: 0 0 50px 0;
+            text-align: center;
+        }
+
+        /* Estilos para el título h2 en la sección de productos */
+        h2 {
+            font-size: 40px;
+            color: #111419;
+        }
+
+        /* Estilos para el contenedor de las cajas de productos */
+        .box-container {
+            margin-top: 55px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        /* Estilos para cada caja de producto (.box) */
+        .box {
+            border-top: 2px solid #9BCE21;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            background-color: #EFF3F4;
+            display: none; /* Inicialmente, las cajas están ocultas */
+        }
+
+        /* Muestra las primeras 8 cajas de productos */
+        .box:nth-child(1),
+        .box:nth-child(2),
+        .box:nth-child(3),
+        .box:nth-child(4),
+        .box:nth-child(5),
+        .box:nth-child(6),
+        .box:nth-child(7),
+        .box:nth-child(8) {
+            display: inline-block;
+        }
+
+        /* Estilos para la imagen dentro de la caja de producto */
+        .box img {
+            height: 200px;
+        }
+
+        /* Estilos para el título h3 dentro del contenido de producto */
+        .product-txt h3 {
+            font-size: 20px;
+            color: #111419;
+            margin-bottom: 10px;
+        }
+
+        /* Estilos para el párrafo dentro del contenido de producto */
+        .product-txt p {
+            margin-bottom: 25px;
+            color: #515557;
+        }
+
+        /* Estilos para la clase .precio dentro del contenido de producto */
+        .precio {
+            font-size: 17px;
+            font-weight: 700;
+            color: #FF9100;
+        }
+
+        /* Estilos para los botones .btn-2, .btn-3 */
+        .btn-2,
+        .btn-3 {
+            background-color: #9BCE21;
+            margin-top: 50px;
+            display: inline-block;
+            padding: 11px 35px;
+            border-radius: 25px;
+            color: #FFFFFF;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+
+        /* Estilos específicos para .btn-2:hover, .btn-3:hover, .btn-1:hover */
+        .btn-2:hover,
+        .btn-3:hover,
+        .btn-1:hover {
+            background-color: #13462E;
+        }
+
+        /* Estilos específicos para .btn-3 */
+        .btn-3 {
+            margin: 0;
+            padding: 8px 25px;
+            border-radius: 5px;
+        }
+
+        /* Estilos para la sección de testimonios */
+        .testimonial {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        /* Estilos para el contenido de testimonios */
+        .testimonial-content {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+
+        /* Estilos específicos para .testimonial-1 */
+        .testimonial-1 {
+            flex-basis: calc(50% - 20px);
+            padding: 50px;
+            text-align: left;
+            background-color: #F6FAFB;
+            border-top: 5px solid #9BCE21;
+        }
+
+        /* Estilos para la imagen dentro de .testimonial-1 */
+        .testimonial-1 img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para el título h4 dentro de .testimonial-1 */
+        .testimonial-1 h4 {
+            font-size: 17px;
+            color: #111419;
+        }
+
+        /* Estilos para el párrafo dentro de .testimonial-1 */
+        .testimonial-1 p {
+            color: #515557;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para la sección del pie de página */
+        .footer {
+            background-color: #2a3462;
+            padding: 80px 0;
+        }
+
+        /* Estilos para el contenido del pie de página */
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Estilos para la sección de enlaces en el pie de página */
+        .link h3 {
+            color: #FFFFFF;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        /* Estilos para los enlaces en la sección de enlaces del pie de página */
+        .link a {
+            color: #AEAFAF;
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+        }
+
+        /* Estilos al pasar el mouse sobre los enlaces en la sección de enlaces del pie de página */
+        .link a:hover {
+            color: #9BCE21;
+        }
+
+        /* Estilos para la sección de medios más pequeños (responsive) */
+        @media (max-width: 991px) {
+
+            /* Estilos para el menú en dispositivos más pequeños */
+            .menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background-color: #EFF3F4;
+                padding: 20px;
+                z-index: 1000;
+            }
+
+            /* Muestra el ícono del menú en dispositivos más pequeños */
+            .menu label {
+                display: initial;
+            }
+
+            /* Ajustes de diseño para la barra de navegación en dispositivos más pequeños */
+            .menu .navbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            /* Ajustes de diseño para los elementos de la barra de navegación en dispositivos más pequeños */
+            .menu .navbar ul li {
+                margin-right: 20px;
+            }
+
+            /* Muestra la barra de navegación cuando el menú está marcado (hamburguesa) */
+            #menu:checked ~ .navbar {
+                display: initial;
+            }
+
+            /* Estilos para el logo en dispositivos más pequeños */
+            .logo {
+                font-size: 25px;
+                color: #9BCE21;
+                text-transform: uppercase;
+                font-weight: 800;
+                text-decoration: none;
+            }
+
+            /* Estilos para los enlaces en la barra de navegación en dispositivos más pequeños */
+            .menu .navbar ul li a {
+                font-size: 18px;
+                color: #111419;
+                text-decoration: none;
+            }
+
+            /* Ajustes de diseño para el carrito en dispositivos más pequeños */
+            .submenu:hover #carrito {
+                width: 100%;
+            }
+
+            /* Ajustes de diseño para el encabezado en dispositivos más pequeños */
+            .header {
+                padding: 50px 0 0 0;
+            }
+
+            /* Ajustes de diseño para el contenido del encabezado en dispositivos más pequeños */
+            .header-content {
+                padding: 30px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            /* Ajustes de diseño para el texto en el encabezado en dispositivos más pequeños */
+            .header-txt {
+                margin-right: 0;
+            }
+
+            /* Ajustes de diseño para los botones en dispositivos más pequeños */
+            .butons {
+                justify-content: center;
+            }
+
+            /* Ajustes de diseño para .btn-1 en dispositivos más pequeños */
+            .btn-1 {
+                margin-bottom: 0;
+            }
+
+            /* Oculta la imagen en dispositivos más pequeños */
+            .header-img {
+                display: none;
+            }
+
+            /* Ajustes de diseño para la sección de ofertas en dispositivos más pequeños */
+            .oferts {
+                padding: 30px;
+                flex-direction: column;
+            }
+
+            /* Ajustes de diseño para .ofert-1 en dispositivos más pequeños */
+            .ofert-1 {
+                margin-bottom: 15px;
+            }
+
+            /* Ajustes de diseño para la sección de productos en dispositivos más pequeños */
+            .product {
+                padding: 0 30px 30px 30px;
+            }
+
+            /* Ajustes de diseño para la sección de testimonios en dispositivos más pequeños */
+            .testimonial {
+                padding: 30px;
+            }
+
+            /* Ajustes de diseño para el contenido de testimonios en dispositivos más pequeños */
+            .testimonial-content {
+                margin-top: 20px;
+                flex-direction: column;
+            }
+
+            /* Estilos para los elementos del carrito en dispositivos más pequeños */
+            .imagen-carrito,
+            .nombre-carrito,
+            .precio-carrito,
+            .cantidad-carrito {
+                text-align: center;
+                padding: 10px;
+                vertical-align: middle; /* Centra el contenido verticalmente */
+            }
+        }
+
+
+    </style>
+</head>
+<!-- Inicio del cuerpo de la página -->
+<body>
+
+<!-- Encabezado de la página -->
+<header class="header">
+    <!-- Contenedor del menú -->
+    <div class="menu container">
+
+        <!-- Logo de la página con enlace (sin destino real) -->
+        <a href="#" class="logo" > LEGENDS ⛈️ </a>
+
+        <!-- Input checkbox para el menú desplegable en dispositivos móviles -->
+        <input type="checkbox" id="menu" />
+
+        <!-- Etiqueta para el ícono de menú -->
+        <label for="menu">
+            <!-- Imagen del ícono de menú -->
+            <img src="https://assets.stickpng.com/images/588a6507d06f6719692a2d15.png" height="50" width="50" class="menu-icono"  alt="menu">
+        </label>
+
+        <!-- Menú de navegación -->
+        <nav class="navbar">
+            <!-- Lista desordenada de enlaces -->
+            <ul>
+                <li><a href="#inicio">INICIO</a></li>
+                <li><a href="#nosotros">NOSOTROS</a></li>
+                <li><a href="#producto">PRODUCTOS</a></li>
+                <li><a href="#cliente">CLIENTES</a></li>
+                <li><a href="#contacto">CONTACTO</a></li>
+            </ul>
+        </nav>
+
+        <!-- Contenedor del carrito de compras -->
+        <div>
+            <ul>
+                <!-- Submenú del carrito de compras -->
+                <div class="submenu">
+                    <!-- Ícono de carrito de compras -->
+                    <img id="img-carrito" src="https://cdn-icons-png.flaticon.com/128/4305/4305700.png" width="50" height="50" alt="car">
+
+                    <!-- Contenido del carrito de compras (tabla y botones) -->
+                    <div id="carrito">
+                        <table id="lista-carrito">
+                            <thead>
+                            <!-- Encabezados de la tabla -->
+                            <tr div class="producto-carrito">
+                                <th class="imagen-carrito">Imagen</th>
+                                <th class="nombre-carrito">Nombre</th>
+                                <th class="precio-carrito">Precio</th>
+                                <th class="cantidad-carrito">Cantidad</th>
+                            </tr>
+                            </thead>
+                            <!-- Cuerpo de la tabla (productos se agregan dinámicamente) -->
+                            <tbody></tbody>
+                        </table>
+                        <!-- Enlaces para vaciar el carrito y proceder a la compra -->
+                        <center>
+                            <a id="vaciar-carrito" class="btn-3">Vaciar carrito</a>
+                            <a th:href="@{/comprar}" class="btn btn-3 " id="comprar-venta">Comprar</a>
+                        </center>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<!-- Contenido principal de la página -->
+<div id="inicio" class="header-content container">
+    <!-- Texto de bienvenida y ofertas especiales -->
+    <div class="header-txt">
+        <span>Bienvenido a nuestra tienda</span>
+        <h1>Ofertas especiales</h1>
+        <p>
+            <!-- Descripción de productos y características -->
+            Nuestros trajes de protección para la lluvia están hechos de materiales de alta calidad
+            como polietileno, PVC y textiles, y están diseñados para protegerte de la lluvia y mantener
+            tu comodidad. Además, tienen elementos reflectantes para garantizar tu seguridad en la vía.
+            ¡Elige nuestros trajes y disfruta de la mejor protección y comodidad!.
+        </p>
+        <!-- Características de productos -->
+        <p>✔️ Comodidad y Protección de la lluvía </p>
+        <p>✔️ Protección de la lluvia </p>
+        <p>✔️ Resistentes </p>
+        <p>✔️ Reflectores para visibilidad en las vías </p>
+
+        <!-- Grupo de botones de acción (registro e inicio de sesión) -->
+        <div class="btn-group">
+            <a th:href="@{/nuevo}" class="btn btn-primary mb-4">REGISTRARSE</a>
+            <a th:href="@{/iniciar}" class="btn btn-success mb-4">INICIAR SESION</a>
+        </div>
+
+        <!-- Enlaces adicionales -->
+        <div class="butons">
+            <a href="https://industriasfenix.com/" class="btn-1">Información</a>
+            <a href="https://industriasfenix.com/emprendedores/" class="btn-1">leer Más</a>
+        </div>
+    </div>
+
+    <!-- Imagen principal -->
+    <div class="header-img">
+        <img src="https://media.istockphoto.com/id/498334211/es/foto/les-encanta-la-lluvia.jpg?s=612x612&w=0&k=20&c=VI0JbLyOp4gBWXhiICtAzmRPZ_cTuJ9xZXFN3UHT7mM=" alt="">
+    </div>
+</div>
+
+<!-- Sección de ofertas con clase "oferts" y contenedor -->
+<section class="oferts container">
+
+    <!-- Primera oferta con id "nosotros" y clases adicionales "ofert-1" y "b1" -->
+    <div id="nosotros" class="ofert-1 b1">
+        <!-- Contenido de texto de la primera oferta -->
+        <div class="ofert-txt">
+            <h3>Nuestra visión</h3>
+            <!-- Descripción de la visión de la empresa en el año 2024 -->
+            <a>✔ Ser en el año 2024, la empresa de producción y comercialización de trajes impermeables
+                Alto reconocimiento en el mercado.
+                Cobertura de 100% a nivel nacional y con un 35%  de la producción de la empresa para el mercado de exportación.</a>
+        </div>
+        <!-- Imagen asociada a la primera oferta -->
+        <div class="ofert-img">
+            <img src="https://industriasfenix.com/wp-content/uploads/elementor/thumbs/Estudio-855-1-scaled-q5zkfvh29n5p5atrqrmfmlrah8supic9sfa45xqm9c.jpg">
+        </div>
+    </div>
+
+    <!-- Segunda oferta con clase "ofert-1" y "b2" -->
+    <div class="ofert-1 b2">
+        <!-- Contenido de texto de la segunda oferta -->
+        <div class="ofert-txt">
+            <h3>Nuestra misión </h3>
+            <!-- Descripción de la misión de Legends Industrias -->
+            <a> ✔ Legends Industrias es una organización dedicada a la fabricación y comercialización
+                de productos en material reciclables de alta calidad, nuestra prioridad es brindarle a jóvenes y madres cabeza de hogar oportunidades de empleabilidad y crecimiento personal y profesional.</a>
+        </div>
+        <!-- Imagen asociada a la segunda oferta -->
+        <div class="ofert-img">
+            <img src="https://industriasfenix.com/wp-content/uploads/2023/08/Fenix-Adventure-Pro-1_new-1.png">
+        </div>
+    </div>
+
+    <!-- Tercera oferta con clase "ofert-1" y "b3" -->
+    <div class="ofert-1 b3">
+        <!-- Contenido de texto de la tercera oferta -->
+        <div class="ofert-txt">
+            <h3>Nuestros valores corporativos</h3>
+            <!-- Lista de valores corporativos con iconos -->
+            <a> ✔ RESPONSABILIDAD <img src="https://industriasfenix.com/wp-content/uploads/2023/03/social.png" height="30" width="30">
+                ✔TRABAJO EN EQUIPO. <img src="https://industriasfenix.com/wp-content/uploads/2023/03/meeting-1.png" height="30" width="30">
+                ✔HONESTIDAD<img src="https://industriasfenix.com/wp-content/uploads/2023/03/honesto.png" height="30" width="30">
+                ️️              ✔ESPÍRITU DE SERVICIO<img src="https://industriasfenix.com/wp-content/uploads/2023/03/public-service.png" height="30" width="30">
+            </a>
+        </div>
+        <!-- Imagen asociada a la tercera oferta -->
+        <div class="ofert-img">
+            <img src="https://industriasfenix.com/wp-content/uploads/2023/07/dry_turtle_1_4.png">
+        </div>
+    </div>
+</section>
+
+<main class="product container">
+    <!-- seccion de productos -->
+        <span><h1>PRODUCTOS</h1></span>
+        <h1> </h1>
+    <!-- Inicio del contenedor de la caja -->
+        <div class="box-container" id="lista-1">
+            <div id="producto"   class="box">
+                <!-- Imagen con enlace a la URL proporcionada -->
+                <img src="data:image/webp;base64,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" height="250" width="200">
+                <!-- Títulos del producto -->
+                <h3>Impermeable</h3>
+                <h3> Siliconado 100%</h3>
+                <!-- Marca del producto -->
+                <p>Marca Rhino</p>
+                <!-- Precio del producto -->
+                <p class="precio">$77.000</p>
+                <!-- Enlace para agregar al carrito con identificador de datos "1" -->
+                <a class="agregar-carrito btn-3" data-id="1">
+                    Agregar al carrito
+                </a>
+            </div>
+        <div class="box">
+            <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTj69VhsTW0sWcyujrFkU4YQdZtfKd0OR5C48HWf8Z3-ciFNK8mrAe2rkY6l2vEsEJShi5wCbyDVZpf7GW0jGkPwiuE2RXynyhmHkbK7eMpjQ9kN0D7lfMPNrs6tMw5CD_IiBjN72Jn&usqp=CAc" height="250" width="200">
+            <h3>Impermeable  </h3>
+            <h3>desechable adulto</h3>
+            <p>Marca Eva botones </p>
+            <p class="precio">$13.990</p>
+            <a  class="agregar-carrito btn-3" data-id="2">
+                Agregar al carrito
+            </a>
+        </div>
+
+        <div class="box">
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSxAuNkb7Fx0zoOwu472kLujOrh0pEPqXaxYuBiropybqzzl1rwXUso5WWpecpmfYtKuQtBRlp9GqFEir3ULC8ic23csU-OO60N06M6hTd-Ixds9kknXrqhJTiPfpTPob9UD3GhpQ&usqp=CAc" height="250" width="200">
+            <h3>Impermeable </h3>
+            <h3>para moto  </h3>
+            <p>Marca piezas</p>
+            <p class="precio">$65.000</p>
+            <a  class="agregar-carrito btn-3" data-id="3">
+                Agregar al carrito
+            </a>
+        </div>
+
+        <div class="box">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_861293-MCO72773971733_112023-V.webp"height="250" width="200" >
+            <h3> Moto bicicleta </h3>
+            <h3> Plastico reflectivo </h3>
+            <p>Marca Universal</p>
+            <p class="precio">$18.999</p>
+            <a  class="agregar-carrito btn-3" data-id="4">
+                Agregar al carrito
+            </a>
+        </div>
+        <div class="box">
+            <img src="data:image/webp;base64,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" height="250" width="200">
+            <h3>Pijama Cubierta </h3>
+            <h3>siliconada </h3>
+            <p>Marca UV</p>
+            <p class="precio">$230.100</p>
+            <a  class="agregar-carrito btn-3" data-id="5">
+                Agregar al carrito
+            </a>
+        </div>
+        <div class="box">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_615670-MCO50296581965_062022-V.webp" height="250" width="200">
+            <h3>Capa Plástica</h3>
+            <h3>Desechable </h3>
+            <p>calidad premiun</p>
+            <p class="precio">$41.200</p>
+            <a  class="agregar-carrito btn-3" data-id="6">
+                Agregar al carrito
+            </a>
+        </div>
+
+        <div class="box">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_750604-MCO52280184947_112022-V.webp" height="250" width="200">
+            <h3>Capa Plástica </h3>
+            <h3>material siliconado </h3>
+            <p>calidad Fenix</p>
+            <p class="precio">$120.900</p>
+            <a  class="agregar-carrito btn-3" data-id="7">
+                Agregar al carrito
+            </a>
+        </div>
+
+        <div class="box">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_609641-MCO47850265771_102021-V.webp" height="250" width="200">
+            <h3>Impermeable </h3>
+            <h3> siliconado rojo</h3>
+            <p>calidad Legends</p>
+            <p class="precio">$80.900</p>
+            <a  class="agregar-carrito btn-3" data-id="8">
+                Agregar al carrito
+            </a>
+        </div>
+
+        <div class="box">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_995889-MCO54385958566_032023-V.webp" height="250" width="200">
+            <h3> Protector  </h3>
+            <h3> Antideslizante</h3>
+            <p>Marca Dr102</p>
+            <p class="precio">$34.500</p>
+            <a  class="agregar-carrito btn-3" data-id="9">
+                Agregar al carrito
+            </a>
+        </div>
+
+        <div class="box">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_622207-MCO45335972033_032021-V.webp" height="250" width="200">
+            <h3>Tipo sudadera </h3>
+            <h3>100% impermeable</h3>
+            <p>Marca Dr1034</p>
+            <p class="precio">$175.000</p>
+            <a  class="agregar-carrito btn-3" data-id="10">
+                Agregar al carrito
+            </a>
+        </div>
+            <div class="box">
+                <img src="https://http2.mlstatic.com/D_NQ_NP_603458-MCO53832534295_022023-V.webp" height="250" width="200">
+                <h3>Sudadera camuflada</h3>
+                <p>Marca ALI</p>
+                <p class="precio">$139.900</p>
+                <a  class="agregar-carrito btn-3" data-id="11">
+                    Agregar al carrito
+                </a>
+            </div>
+            <div class="box">
+                <img src="https://http2.mlstatic.com/D_NQ_NP_671540-MCO69363581176_052023-V.webp" height="250" width="200">
+                <h3>Impermeable niños</h3>
+                <h3>de coloroes</h3>
+                <p>Marca Cchico</p>
+                <p class="precio">$26.910</p>
+                <a  class="agregar-carrito btn-3" data-id="12">
+                    Agregar al carrito
+                </a>
+            </div>
+        </div>
+        <div class="btn-2" id="load-more">Cargar Más</div>
+
+    </main>
+<!-- Inicio de la sección de testimonios con identificador "cliente" y clases "testimonial" y "container" -->
+<section id="cliente" class="testimonial container">
+
+    <!-- Título de la sección -->
+    <span>Testimoniales</span>
+
+    <!-- Encabezado de la sección -->
+    <h2>Que opinan nuestro clientes</h2>
+
+    <!-- Contenedor para el contenido de los testimonios con clase "testimonial-content" -->
+    <div class="testimonial-content">
+
+        <!-- Primer testimonio con clase "testimonial-1" -->
+        <div class="testimonial-1">
+
+            <!-- Párrafo del testimonio -->
+            <p>
+                He logrado obtener muy buenos ingresos adicionales que me han
+                ayudado ha cumplir con mis obligaciones. Muy agradecido con Fenix!!!
+            </p>
+
+            <!-- Imagen asociada al testimonio -->
+            <img src="https://w7.pngwing.com/pngs/589/360/png-transparent-star-customer-service-review-rating-star-text-logo-computer-wallpaper.png" alt="920">
+
+            <!-- Nombre del cliente que proporcionó el testimonio -->
+            <h4>Pablo Marín</h4>
+        </div>
+
+        <div class="testimonial-1">
+            <p>
+                De verdad que son productos de muy buena calidad y muy cómodos, se venden muy bien y los clientes quedan satisfechos con la compra. 100% recomendados.
+            </p>
+            <img src="https://w7.pngwing.com/pngs/589/360/png-transparent-star-customer-service-review-rating-star-text-logo-computer-wallpaper.png" alt="920">
+            <h4>Sara Montoya</h4>
+        </div>
+        <div class="testimonial-1">
+            <p>
+                El equipo de Fenix te brinda toda la ayuda para que puedas generar buenos ingresos, si eres una persona organizada y disciplinada puedes aumentar tus ganancias de manera significativa.
+            </p>
+            <img src="https://w7.pngwing.com/pngs/589/360/png-transparent-star-customer-service-review-rating-star-text-logo-computer-wallpaper.png" alt="920">
+            <h4>Jaime Ortiz</h4>
+        </div>
+    </div>
+</section>
+<!-- Fin de la sección de testimonios -->
+
+<!-- Inicio de la sección -->
+<section>
+
+    <!-- Contenedor de contenido del encabezado con clase "header-content" y "container" -->
+    <div class="header-content container">
+        <!-- División con identificador "contacto" y clases "header-txt" -->
+        <div id="contacto" class="header-txt">
+
+            <!-- Texto "CONTACTO" dentro de una etiqueta de span -->
+            <span>CONTACTO</span>
+            <h1>COMUNICATE CON NOSOTROS </h1>
+
+            <!-- Párrafo de descripción y contacto -->
+            <p>
+                Si tienes alguna duda sobre cómo ser distribuidor(a), próximamente podrás comprar en nuestra tienda en línea, tienes alguna sugerencia o comentario. Escríbenos y estaremos atentos a comunicarnos contigo en el menor tiempo posible.
+            </p>
+            <p>📞 Nos puedes contactar 301 5015825 o el fijo 8741496. Llámanos! </p>
+            <p>📍 Estamos ubicados en el sector CRA 1 H # 6-50 B/ Centro, Neiva- Huila Colombia .</p>
+        </div>
+
+        <!-- División con clase "header-img" para la sección de imágenes -->
+        <div class="header-img">
+            <!-- División con clases "mapouter" y "gmap_canvas" para mostrar el mapa de Google -->
+            <div class="mapouter">
+                <div class="gmap_canvas">
+                    <!-- Iframe del mapa de Google con ubicación específica -->
+                    <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=carrera%201%20h%206%2050%20&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    <!-- Enlace de atribución de Google Maps -->
+                    <a href="https://putlocker-is.org">putlocker</a>
+                    <!-- Estilos CSS para el mapa -->
+                    <style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style>
+                    <!-- Enlace a la información sobre cómo agregar un mapa de Google a un sitio web -->
+                    <a href="https://www.embedgooglemap.net">how to add a google map to my website</a>
+                    <!-- Estilos CSS adicionales para el mapa -->
+                    <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Fin de la sección -->
+
+<!-- Inicio del pie de página con clase "footer" -->
+<footer class="footer">
+    <!-- Contenedor del contenido del pie de página con clases "footer-content" y "container" -->
+    <div class="footer-content container">
+        <!-- División con clase "link" para las redes sociales -->
+        <div class="link">
+            <h3>REDES SOCIALES</h3>
+
+            <!-- Lista con enlaces a las redes sociales -->
+            <ul>
+                <li><a href="https://www.instagram.com/somosadventureco" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1582/PNG/128/instagram_108043.png" alt="Instagram" height="50" width="50"></a></li>
+                <li><a href="https://www.facebook.com/somosadventureco" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1582/PNG/128/facebook_108044.png" alt="Facebook" height="50" width="50"></a></li>
+                <li><a href="https://www.youtube.com/watch?v=7hppTWiiFeg" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1582/PNG/128/youtube_108041.png" alt="YouTube" height="50" width="50"></a></li>
+            </ul>
+        </div>
+
+        <!-- División con clase "link" para las ubicaciones -->
+        <div class="link">
+            <h3>UBICACIONES</h3>
+
+            <!-- Lista con enlaces a las ubicaciones en Google Maps -->
+            <ul>
+                <li><a href="https://www.google.com/maps/place/%C3%89xito+Neiva+Centro/@2.9263742,-75.2930004,18.25z/data=!4m14!1m7!3m6!1s0x8e3b75e471466777:0x4144ee5053477f58!2sCalixto!8m2!3d2.926052!4d-75.2894532!16s%2Fg%2F11sv94kzk5!3m5!1s0x8e3b747cf9273007:0x928b6619cc397bd3!8m2!3d2.926276!4d-75.291223!16s%2Fg%2F1q6jgrzyc?entry=ttu" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1512/PNG/96/31_104880.png" alt="Mapa" height="50" width="50"></a></li>
+                <li><a href="https://www.google.com/maps/place/Cl.+38+%237a-51,+Comuna+2,+Neiva,+Huila/@2.9489118,-75.2922335,17z/data=!3m1!4b1!4m5!3m4!1s0x8e3b745743b1727d:0x160ba89536782515!8m2!3d2.9489064!4d-75.2896586?entry=ttu" target="_blank"><img src="https://cdn.icon-icons.com/icons2/2444/PNG/96/location_map_pin_mark_icon_148685.png" alt="Mapa" height="50" width="50"></a></li>
+                <li><a href="https://www.google.com/maps/place/Cl.+40+%237a-51,+Comuna+2,+Neiva,+Huila/@2.9498518,-75.2924981,17z/data=!3m1!4b1!4m5!3m4!1s0x8e3b745724a9aa83:0xd8b81d6e2a29758d!8m2!3d2.9498464!4d-75.2899232?entry=ttu" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1261/PNG/96/1496676725-rounded-high-ultra-colour02-maps_84627.png" alt="Mapa" height="50" width="50"></a></li>
+            </ul>
+        </div>
+
+        <!-- División con clase "link" para correos electrónicos -->
+        <div class="link">
+            <h3>CORREOS</h3>
+
+            <!-- Lista con enlaces a correos electrónicos -->
+            <ul>
+                <li><a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSKkHgCbTfxvgvbgKDPxwLVNdwRPlNmqHTKRjMwjCxHFBgHjBNQXRsRVFwzCWvdglglTwHZC" target="_blank"><img src="https://cdn.icon-icons.com/icons2/2642/PNG/96/google_mail_gmail_logo_icon_159346.png" alt="Gmail" height="50" width="50"></a></li>
+                <li><a href="https://outlook.live.com/mail/about/index_es-mx.html" target="_blank"><img src="https://cdn.icon-icons.com/icons2/615/PNG/96/Outlook_icon-icons.com_56596.png" alt="Outlook" height="50" width="50"></a></li>
+                <li><a href="https://www.skype.com/es/" target="_blank"><img src="https://cdn.icon-icons.com/icons2/122/PNG/96/skype_socialnetwork_20014.png" alt="Skype" height="50" width="50"></a></li>
+            </ul>
+        </div>
+
+        <!-- División con clase "link" para información adicional -->
+        <div class="link">
+            <!-- Título "INFORMACIÓN" -->
+            <h3>INFORMACIÓN</h3>
+
+            <!-- Lista  con enlaces a información adicional -->
+            <ul>
+                <li><a href="https://api.whatsapp.com/send/?phone=573213949267&text&type=phone_number&app_absent=0" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1582/PNG/128/whatsapp_108042.png" alt="WhatsApp" height="50" width="50"></a></li>
+                <li><a href="https://web.telegram.org/" target="_blank"><img src="https://cdn.icon-icons.com/icons2/923/PNG/96/telegram_icon-icons.com_72055.png" alt="Telegram" height="50" width="50"></a></li>
+                <li><a href="https://www.tiktok.com/upload?lang=es" target="_blank"><img src="https://cdn.icon-icons.com/icons2/2429/PNG/96/tik_tok_logo_icon_147226.png" alt="TikTok" height="50" width="50"></a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<!-- Fin del pie de página -->
+
+<script>
+    // Selecciona el botón "Load More" por su ID
+    let loadMoreBtn = document.querySelector('#load-more');
+
+    // Inicializa una variable para llevar el conteo de los elementos actuales
+    let currentItem = 8;
+
+    // Agrega un evento de clic al botón "Load More"
+    loadMoreBtn.onclick = () => {
+        // Selecciona todos los elementos con clase "box" dentro del contenedor con clase "box-container"
+        let boxes = [...document.querySelectorAll('.box-container .box')];
+
+        // Muestra los próximos 4 elementos en el conjunto de productos
+        for (var i = currentItem; i < currentItem + 4; i++) {
+            boxes[i].style.display = 'inline-block';
+        }
+
+        // Actualiza la variable currentItem para realizar un seguimiento de la posición actual
+        currentItem += 4;
+
+        // Oculta el botón "Load More" si se han mostrado todos los productos
+        if (currentItem >= boxes.length) {
+            loadMoreBtn.style.display = 'none';
+        }
+    }
+
+    // Agrega un evento que se dispara cuando el contenido HTML se ha cargado
+    document.addEventListener("DOMContentLoaded", () => {
+        // Inicializa un array para almacenar los productos en el carrito
+        let carrito = [];
+
+        // Obtiene referencias a elementos del DOM
+        const carritoContainer = document.getElementById("carrito");
+        const listaCarrito = document.querySelector("#lista-carrito tbody");
+        const vaciarCarritoBtn = document.getElementById("vaciar-carrito");
+        const comprarBtn = document.getElementById("comprar-venta");
+
+        // Función para redirigir a la página de registro de compra
+        function irARegistroCompra() {
+            // Verifica si hay productos en el carrito antes de redirigir
+            if (carrito.length > 0) {
+                // Almacena los datos del carrito en localStorage
+                localStorage.setItem("carrito", JSON.stringify(carrito));
+                // Redirige a la página de registro de compra
+                window.location.href = "ventas.html";
+            } else {
+                // Muestra un mensaje al usuario indicando que el carrito está vacío
+                alert("El carrito está vacío. Agrega productos antes de comprar.");
+            }
+        }
+        function comprarProducto(e) {
+            if (e.target.classList.contains("comprar-producto")) {
+                const productoId = e.target.getAttribute("data-id");
+                const productoComprado = carrito.find(item => item.id === productoId);
+
+                // Puedes almacenar los datos del producto en localStorage
+                localStorage.setItem("productoComprado", JSON.stringify(productoComprado));
+
+                // Redirige a la página de registro de compra
+                window.location.href = "ventas.html";
+            }
+        }
+
+        // Función para agregar un producto al carrito
+        function agregarProductoAlCarrito(e) {
+            if (e.target.classList.contains("agregar-carrito")) {
+                const productoSeleccionado = e.target.parentElement;
+                obtenerProductoInfo(productoSeleccionado);
+
+                // Muestra un mensaje de notificación
+                mostrarMensaje("PRODUCTO AGREGADO AL CARRITO🛒✔️");
+            }
+        }
+
+        // Función para mostrar mensajes de notificación
+        function mostrarMensaje(mensaje) {
+            // Puedes personalizar la forma en que se muestra el mensaje, por ejemplo, usando una alerta
+            alert(mensaje);
+        }
+
+        // Función para obtener la información del producto seleccionado
+        function obtenerProductoInfo(producto) {
+            const productoId = producto.querySelector(".agregar-carrito").getAttribute("data-id");
+            const productoExistente = carrito.find(item => item.id === productoId);
+
+            if (productoExistente) {
+                productoExistente.cantidad++;
+            } else {
+                const productoInfo = {
+                    imagen: producto.querySelector("img").src,
+                    nombre: producto.querySelector("h3").textContent,
+                    precio: producto.querySelector(".precio").textContent,
+                    id: productoId,
+                    cantidad: 1
+                };
+                carrito.push(productoInfo);
+            }
+            carritoHTML();
+        }
+
+        // Función para mostrar el carrito en el DOM
+        function carritoHTML() {
+            limpiarCarrito();
+            carrito.forEach(producto => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                <td>
+                    <img src="${producto.imagen}" width="50" >
+                </td>
+                <td>${producto.nombre}</td>
+                <td>${producto.precio}</td>
+                <td>${producto.cantidad}</td>
+                <td>
+                    <a class="borrar-producto" data-id="${producto.id}">❌</a>
+
+                </td>
+            `;
+                listaCarrito.appendChild(row);
+            });
+        }
+
+        // Función para limpiar el carrito en el DOM
+        function limpiarCarrito() {
+            while (listaCarrito.firstChild) {
+                listaCarrito.removeChild(listaCarrito.firstChild);
+            }
+        }
+
+        // Función para vaciar el carrito
+        function vaciarCarrito() {
+            carrito.splice(0, carrito.length);
+            carritoHTML();
+        }
+
+        // Función para eliminar un producto del carrito
+        function eliminarProducto(e) {
+            if (e.target.classList.contains("borrar-producto")) {
+                const productoId = e.target.getAttribute("data-id");
+                carrito = carrito.filter(producto => producto.id !== productoId);
+                carritoHTML();
+            }
+
+        }
+
+        // Eventos
+        document.addEventListener("click", agregarProductoAlCarrito);
+        carritoContainer.addEventListener("click", eliminarProducto);
+        vaciarCarritoBtn.addEventListener("click", vaciarCarrito);
+        comprarBtn.addEventListener("click", irARegistroCompra);
+        document.addEventListener("click", comprarProducto );  // Agregamos este evento
+
+    });
+
+</script>
+<!-- Abre un div con la clase "footer" para el pie de página -->
+    <div class="footer">
+        <!-- Centra un párrafo que contiene el año y el mensaje de derechos de autor -->
+        <center><p>&copy; 2023  Impermeables Barbosa. Todos los derechos reservados</p></center>
+        <!-- Centra un párrafo que contiene un enlace a las políticas de privacidad -->
+        <center><p><a href="https://www.mintic.gov.co/portal/inicio/Secciones-auxiliares/Politicas/2627:Politicas-de-Privacidad-y-Condiciones-de-Uso">Políticas de privacidad </a></p></center>
+    </div>
+    </form>
+</body>
+</html>
+
+
+
+
